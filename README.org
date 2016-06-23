@@ -1,0 +1,26 @@
+#+TITLE:  IDP Captcha
+#+AUTHOR: Niandalu
+#+EMAIL:  niandalu@gmail.com
+#+DATE:   2016-06-23
+#+STARTUP:  content
+
+[[https://github.com/Niandalu/idp_captcha][https://travis-ci.org/Niandalu/idp_captcha.svg]]
+
+I know it's kind of stupid, but it is what I need now. So I made it.
+
+* Server
+CLOSED: [2016-06-23 Thu 18:07]
+1. Add the following code to your ~Gemfile~
+   #+BEGIN_SRC ruby
+   gem 'idp_captcha', github: 'niandalu/idp_captcha'
+   #+END_SRC
+2. Mount it in ~config/route.rb~
+   #+BEGIN_SRC ruby
+   mount IdpCaptcha::Engine => '/idp_captcha'
+   #+END_SRC
+
+* Client
+1. Request ~SERVER/idp_captcha/new~ to get ~:code~
+2. Display the image by assigning src to ~SERVER/idp_captcha/:code~
+3. To validate the user input captcha,
+   ~DELETE SERVER/idp_captcha/:code~ with ~{ captcha: <USER INPUT> }~
