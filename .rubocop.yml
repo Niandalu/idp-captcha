@@ -1,0 +1,11 @@
+AllCops:
+  Exclude:
+    - 'spec/**/*'
+    - 'bin/**/*'
+    - 'lib/idp_captcha/image.rb'
+
+Metrics/LineLength:
+  Max: 90
+
+Documentation:
+  Enabled: false
