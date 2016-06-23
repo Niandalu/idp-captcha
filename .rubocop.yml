@@ -3,6 +3,7 @@ AllCops:
     - 'spec/**/*'
     - 'bin/**/*'
     - 'lib/idp_captcha/image.rb'
+    - 'vendor/**/*'
 
 Metrics/LineLength:
   Max: 90
