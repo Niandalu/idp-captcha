@@ -18,4 +18,8 @@ RSpec::Core::RakeTask.new(:spec)
 require 'rubocop/rake_task'
 RuboCop::RakeTask.new(:rubocop)
 
-task default: [:rubocop, :spec]
+task :create_tmp_cache do
+  exec 'cd spec/dummy && rake tmp:create'
+end
+
+task default: [:create_tmp_cache, :rubocop, :spec]
