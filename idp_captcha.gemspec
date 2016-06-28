@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = IdpCaptcha::VERSION
   s.authors     = ['Niandalu']
   s.email       = ['niandalu@gmail.com']
-  s.homepage    = 'https://github.com/huacnlee/rucaptcha'
+  s.homepage    = 'https://github.com/Niandalu/idp_captcha'
   s.summary     = 'Captcha as service'
   s.license     = 'MIT'
 
