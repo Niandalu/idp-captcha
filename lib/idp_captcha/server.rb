@@ -22,6 +22,7 @@ module IdpCaptcha
 
       def destroy(key, user_input)
         stored_value = Rails.cache.fetch("idpcaptcha/#{key}")
+        return false unless stored_value
 
         valid_input = !user_input.nil? && !user_input.empty?
         return false unless valid_input
