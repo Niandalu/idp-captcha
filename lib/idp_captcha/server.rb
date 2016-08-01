@@ -6,14 +6,14 @@ module IdpCaptcha
     class << self
       def code
         random_key.tap do |key|
-          Rails.cache.write("idpcaptcha/#{key}",
-                            random_key(length: IdpCaptcha.config.len),
-                            expires_in: 2.minutes)
+          CacheProxy.write("idpcaptcha/#{key}",
+                           random_key(length: IdpCaptcha.config.len),
+                           expires_in: 2.minutes)
         end
       end
 
       def show(key)
-        text = Rails.cache.fetch("idpcaptcha/#{key}")
+        text = CacheProxy.fetch("idpcaptcha/#{key}")
 
         raise NotExist, 'cannot find the captcha with given key' unless text
 
@@ -21,7 +21,7 @@ module IdpCaptcha
       end
 
       def destroy(key, user_input)
-        stored_value = Rails.cache.fetch("idpcaptcha/#{key}")
+        stored_value = CacheProxy.fetch("idpcaptcha/#{key}")
         return false unless stored_value
 
         valid_input = !user_input.nil? && !user_input.empty?
@@ -30,7 +30,7 @@ module IdpCaptcha
         matched = stored_value.casecmp(user_input).zero?
         return false unless matched
 
-        Rails.cache.delete("idpcaptcha/#{key}")
+        CacheProxy.delete("idpcaptcha/#{key}")
       end
 
       private

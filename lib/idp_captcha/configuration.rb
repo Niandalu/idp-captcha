@@ -10,6 +10,7 @@ module IdpCaptcha
     # Number of Captcha codes limit
     # set 0 to disable limit and file cache, default: 100
     attr_accessor :cache_limit
+    attr_accessor :cache_proxy
     # Color style, default: :colorful, allows: [:colorful, :black_white]
     attr_accessor :style
     # session[:_rucaptcha] expire time, default 2 minutes

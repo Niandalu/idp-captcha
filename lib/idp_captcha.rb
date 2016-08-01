@@ -1,5 +1,6 @@
 require 'rails'
 require 'idp_captcha/engine'
+require 'idp_captcha/cache_proxy'
 
 require 'idp_captcha/configuration'
 require 'idp_captcha/image'
@@ -18,6 +19,7 @@ module IdpCaptcha
       @config.cache_limit = 100
       @config.expires_in  = 2.minutes
       @config.style       = :gray
+      @config.cache_proxy = Rails.cache
       @config
     end
 
